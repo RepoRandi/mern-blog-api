@@ -1,4 +1,4 @@
-exports.creteProduct = (req, res, next) => {
+const creteProduct = (req, res, next) => {
   res.json({
     message: "Create Product Success",
     data: {
@@ -10,7 +10,7 @@ exports.creteProduct = (req, res, next) => {
   next();
 };
 
-exports.getAllProduct = (req, res, next) => {
+const getAllProducts = (req, res, next) => {
   res.json({
     message: "Get All Product Success",
     data: [
@@ -22,4 +22,9 @@ exports.getAllProduct = (req, res, next) => {
     ],
   });
   next();
+};
+
+module.exports = {
+  createProduct: creteProduct,
+  getAllProducts: getAllProducts,
 };

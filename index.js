@@ -1,8 +1,11 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 const productRoutes = require("./src/routes/products");
+
+app.use(bodyParser.json()); //Yg di terima Type JSON
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

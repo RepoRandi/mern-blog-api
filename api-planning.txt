@@ -1,0 +1,85 @@
+Standar API
+
+{root.api}/{version}/{grouping}/{endpoint}
+SAMPLE:
+http://mern-api.kabayancoding.com/v1/auth/login
+
+
+Standar Status RESPONSE
+
+200 - OK                    --> Call API Success
+201 - CREATED               --> Post Success
+400 - BAD REQUEST           --> Error on Client Side (Bisa input yang salah dll)
+401 - UNAUTHORIZED          --> User not authorized to request
+403 - FORBIDDEN             --> User not allowed to access
+404 - NOT FOUND             --> Request Endpoint Not Found
+500 - INTERNAL SERVER ERROR --> Error on Server Side
+502 - BAD GATEWAY           --> Invalid Response From Another Request
+
+
+=================================================================================================
+
+
+GROUP: Authentication
+
+[1] - Register
+
+ROOT:
+{root.apa}/{version}/auth/register
+
+REQUEST CLIENT: 
+{
+    "name": "Randi",
+    "email": "randi@gmail.com",
+    "password": "123456"
+}
+
+RESPONSE:
+{
+    "message": "Register success",
+    "data": {
+        "id": 1,
+        "name": "Randi",
+        "email": "randi@gmail.com",
+        "password": "123456"
+    }
+}
+
+ERROR-RESPONSE:
+
+400 --> Input yang anda masukan tidak valid
+
+
+[2] - login
+
+ROOT:
+{root.apa}/{version}/auth/login
+
+REQUEST CLIENT: 
+{
+    "email": "randi@gmail.com",
+    "password": "123456"
+}
+
+RESPONSE:
+{
+    "message": "Login success",
+    "data": {
+        "id": 1,
+        "name": "Randi",
+        "email": "randi@gmail.com",
+        "password": "123456"
+    }
+}
+
+ERROR-RESPONSE:
+
+400 --> Input yang anda masukan tidak valid
+
+
+GROUP: Blog
+
+[1] - Create Blog Post
+[2] - Get Blog Post
+[3] - Update Blog Post
+[4] - Delete Blog Post

@@ -1,9 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
 
 const app = express();
 
-const productRoutes = require("./src/routes/products");
+const authRoutes = require('./src/routes/auth');
+const blogRoutes = require('./src/routes/blog');
 
 app.use(bodyParser.json()); //Yg di terima Type JSON
 
@@ -17,6 +19,21 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/v1/customer", productRoutes);
+app.use("/v1/auth", authRoutes);
+app.use("/v1/blog", blogRoutes);
 
-app.listen(4000);
+app.use((error, req, res, next) => {
+  const status = error.errorStatus || 500;
+  const message = error.message;
+  const data = error.data
+  res.status(status).json({ message: message, data: data })
+})
+
+mongoose.connect('mongodb+srv://randi:rama0809@cluster0.ss3kv.mongodb.net/<dbname>?retryWrites=true&w=majority')
+  .then(() => {
+    app.listen(4000, () => console.log('Connection success'));
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
+

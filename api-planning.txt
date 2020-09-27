@@ -46,9 +46,9 @@ RESPONSE:
 }
 
 ERROR-RESPONSE:
-
+201 --> Register Berhasil
 400 --> Input yang anda masukan tidak valid
-
+================================================================================================
 
 [2] - login
 
@@ -75,11 +75,42 @@ RESPONSE:
 ERROR-RESPONSE:
 
 400 --> Input yang anda masukan tidak valid
-
+================================================================================================
 
 GROUP: Blog
 
 [1] - Create Blog Post
+
+[POST] : {root.api}/{version}/blog/post
+
+req: 
+{
+    "title": "Title Blog",
+    "image": "imagefile.png",
+    "body" : "Lorem Ipsum is simply dummy text of the printing"
+}
+
+res:
+{
+    "message": "Create Blog Post Success",
+    "data": {
+        "post_id": 1,
+        "title": "Title Blog",
+        "image": "imagefile.png",
+        "body" : "Lorem Ipsum is simply dummy text of the printing"
+        "created-at": "21/09/2020",
+        "author": {
+            "uid": 1,
+            "name": "Testing"
+        }
+
+    }
+}
+
+Error-response:
+201 --> Blog Post Berhasil Di buat
+400 --> Input yang anda masaukan tidak valid
+================================================================================================
 [2] - Get Blog Post
 [3] - Update Blog Post
 [4] - Delete Blog Post

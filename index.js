@@ -29,7 +29,7 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data })
 })
 
-mongoose.connect('mongodb+srv://randi:rama0809@cluster0.ss3kv.mongodb.net/<dbname>?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://randi:rama0809@cluster0.ss3kv.mongodb.net/db_mern-blog?retryWrites=true&w=majority')
   .then(() => {
     app.listen(4000, () => console.log('Connection success'));
   })

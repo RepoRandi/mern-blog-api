@@ -11,4 +11,7 @@ router.post('/post', [
     body('body').isLength({ min: 5 }).withMessage('Title title yang anda masukan tidak sesuai')],
     blogController.createBlogPost);
 
+//! [GET] : /v1/blog/post
+router.get('/posts', blogController.getAllBlogPost);
+
 module.exports = router;

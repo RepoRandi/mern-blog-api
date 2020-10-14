@@ -22,7 +22,21 @@ router.post(
 //! [GET] : /v1/blog/posts
 router.get('/posts', blogController.getAllBlogPost);
 
-//! [GET] : /v1/blog/posts/id
+//! [GET] : /v1/blog/post/id
 router.get('/post/:postId', blogController.getBlogPostById);
+
+//! [PUT] : /v1/blog/post/id
+router.put(
+	'/post/:postId',
+	[
+		body('title')
+			.isLength({ min: 5 })
+			.withMessage('Input title yang anda masukan tidak sesuai'),
+		body('body')
+			.isLength({ min: 5 })
+			.withMessage('Title title yang anda masukan tidak sesuai'),
+	],
+	blogController.updateBlogPost
+);
 
 module.exports = router;
